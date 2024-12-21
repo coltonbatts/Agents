@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENTS Web Interface</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AGENTS</h1>
+            <p class="subtitle">A Retro-Inspired Agent Framework</p>
+        </header>
+
+        <main>
+            <section class="agents-panel">
+                <h2>Available Agents</h2>
+                <div id="agents-list" class="grid"></div>
+            </section>
+
+            <section class="workflow-panel">
+                <h2>Workflow Builder</h2>
+                <div class="workflow-steps" id="workflow-steps"></div>
+                <button class="retro-button" onclick="addWorkflowStep()">Add Step</button>
+                <button class="retro-button primary" onclick="executeWorkflow()">Execute Workflow</button>
+            </section>
+
+            <section class="output-panel">
+                <h2>Output</h2>
+                <div id="output" class="terminal"></div>
+            </section>
+        </main>
+    </div>
+
+    <template id="workflow-step-template">
+        <div class="workflow-step">
+            <select class="agent-select">
+                <option value="">Select Agent</option>
+            </select>
+            <input type="text" class="step-input" placeholder="Input data">
+            <button class="retro-button danger" onclick="removeStep(this)">×</button>
+        </div>
+    </template>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

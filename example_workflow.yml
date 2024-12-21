@@ -1,0 +1,15 @@
+steps:
+  - agent: preprocessor
+    input: "This is a sample text that needs processing!"
+    type: process
+  
+  - agent: analyzer
+    input: 
+      cleaned_text: ""  # Will be filled by preprocessor
+      word_count: 0
+    type: analyze
+  
+  - agent: reporter
+    input:
+      analysis: {}  # Will be filled by analyzer
+    type: report

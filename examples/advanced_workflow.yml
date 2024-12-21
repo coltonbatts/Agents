@@ -1,0 +1,39 @@
+steps:
+  # Step 1: Load and preprocess data
+  - agent: data_agent
+    input:
+      operation: read
+      format: csv
+      source: data/sample.csv
+      query: "age > 25"
+    type: process
+
+  # Step 2: Enrich data with API call
+  - agent: api_agent
+    input:
+      service: openai
+      endpoint: chat/completions
+      method: POST
+      data:
+        model: gpt-3.5-turbo
+        messages:
+          - role: system
+            content: "You are a helpful assistant that enriches customer data."
+          - role: user
+            content: "Analyze this customer segment"
+    type: process
+
+  # Step 3: Run ML analysis
+  - agent: analysis_agent
+    input:
+      task: text_clustering
+      data: ["customer feedback texts here"]
+      options:
+        n_clusters: 3
+    type: process
+
+  # Step 4: Generate final report
+  - agent: reporter
+    input:
+      analysis: {}  # Will be filled by previous steps
+    type: report
