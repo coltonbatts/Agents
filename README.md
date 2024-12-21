@@ -18,7 +18,7 @@ A minimalist, retro-inspired framework for building specialized AI agents that c
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/<USERNAME>/AGENTS.git
+git clone https://github.com/coltonbatts/Agents.git
 cd AGENTS
 ```
 
